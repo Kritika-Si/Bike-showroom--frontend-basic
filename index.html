@@ -4,223 +4,635 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta
+        name="description"
+        content="Velocity Motorcycles - Premium motorcycle showcase and comparison platform."
+    >
+
     <title>VELOCITY | Premium Motorcycles</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ================= NAVBAR ================= -->
+
     <header class="navbar">
 
-        <div class="logo">
+        <a href="#home" class="logo">
             <span>V</span> VELOCITY
-        </div>
+        </a>
 
-        <nav>
+        <nav class="desktop-nav">
             <a href="#home">Home</a>
             <a href="#bikes">Bikes</a>
+            <a href="#compare">Compare</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
 
-        <button class="nav-btn" onclick="scrollToBikes()">
-            Explore Bikes
-        </button>
+        <div class="nav-actions">
 
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <button
+                class="wishlist-nav"
+                onclick="scrollToWishlist()"
+                aria-label="View favorites"
+            >
+                ♡ <span id="wishlistCount">0</span>
+            </button>
+
+            <button
+                class="nav-btn"
+                onclick="scrollToBikes()"
+            >
+                Explore Bikes
+            </button>
+
+            <button
+                class="menu-icon"
+                onclick="toggleMenu()"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home" onclick="closeMobileMenu()">Home</a>
+            <a href="#bikes" onclick="closeMobileMenu()">Bikes</a>
+            <a href="#compare" onclick="closeMobileMenu()">Compare</a>
+            <a href="#about" onclick="closeMobileMenu()">About</a>
+            <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+        </div>
 
     </header>
 
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+    <!-- ================= HERO ================= -->
 
-        <div class="hero-content">
+    <main>
 
-            <p class="small-title">THE FUTURE OF RIDING</p>
+        <section class="hero" id="home">
 
-            <h1>
-                RIDE BEYOND
-                <span>LIMITS.</span>
-            </h1>
+            <div class="hero-content">
 
-            <p class="hero-text">
-                Experience power, performance and precision
-                engineered for riders who refuse to settle.
-            </p>
+                <p class="eyebrow">
+                    THE FUTURE OF RIDING
+                </p>
 
-            <div class="hero-buttons">
+                <h1>
+                    RIDE BEYOND
+                    <span>LIMITS.</span>
+                </h1>
 
-                <button class="primary-btn" onclick="scrollToBikes()">
-                    Explore Collection →
-                </button>
+                <p class="hero-description">
+                    Discover motorcycles engineered for performance,
+                    precision and pure riding pleasure.
+                </p>
 
-                <button class="secondary-btn" onclick="showMessage()">
-                    Book a Test Ride
+                <div class="hero-buttons">
+
+                    <button
+                        class="primary-btn"
+                        onclick="scrollToBikes()"
+                    >
+                        Explore Collection →
+                    </button>
+
+                    <button
+                        class="secondary-btn"
+                        onclick="openTestRide()"
+                    >
+                        Book a Test Ride
+                    </button>
+
+                </div>
+
+                <div class="hero-mini-stats">
+
+                    <div>
+                        <strong>25+</strong>
+                        <span>Models</span>
+                    </div>
+
+                    <div>
+                        <strong>150K+</strong>
+                        <span>Riders</span>
+                    </div>
+
+                    <div>
+                        <strong>30+</strong>
+                        <span>Countries</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-bike">
+
+                <div class="hero-glow"></div>
+
+                <div class="hero-ring"></div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1400&q=85"
+                    alt="Premium motorcycle"
+                >
+
+                <div class="hero-floating-card">
+
+                    <span>FEATURED</span>
+
+                    <strong>Velocity R7</strong>
+
+                    <small>
+                        689 CC · 73 HP · 210 KM/H
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats">
+
+            <div class="stat-item">
+                <strong>25+</strong>
+                <span>Bike Models</span>
+            </div>
+
+            <div class="stat-item">
+                <strong>150K+</strong>
+                <span>Happy Riders</span>
+            </div>
+
+            <div class="stat-item">
+                <strong>30+</strong>
+                <span>Countries</span>
+            </div>
+
+            <div class="stat-item">
+                <strong>10</strong>
+                <span>Years Experience</span>
+            </div>
+
+        </section>
+
+
+        <!-- ================= BIKE SHOWCASE ================= -->
+
+        <section class="bikes-section" id="bikes">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        OUR COLLECTION
+                    </p>
+
+                    <h2>
+                        FIND YOUR
+                        <span>PERFECT RIDE.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Explore our motorcycle collection and compare
+                        specifications, performance and pricing.
+                    </p>
+
+                </div>
+
+                <div class="result-count">
+                    <strong id="resultCount">6</strong>
+                    <span>Bikes Found</span>
+                </div>
+
+            </div>
+
+
+            <!-- ================= FILTER PANEL ================= -->
+
+            <div class="filter-panel">
+
+                <div class="search-wrapper">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search by bike name..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        id="clearSearch"
+                        onclick="clearSearch()"
+                        aria-label="Clear search"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="filter-row">
+
+                    <div class="filter-group">
+
+                        <label for="categoryFilter">
+                            CATEGORY
+                        </label>
+
+                        <select id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="street">Street</option>
+                            <option value="sport">Sport</option>
+                            <option value="cruiser">Cruiser</option>
+                            <option value="adventure">Adventure</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="priceFilter">
+                            PRICE RANGE
+                        </label>
+
+                        <select id="priceFilter">
+                            <option value="all">Any Price</option>
+                            <option value="0-2">Under ₹2 Lakh</option>
+                            <option value="2-5">₹2 – ₹5 Lakh</option>
+                            <option value="5-10">₹5 – ₹10 Lakh</option>
+                            <option value="10+">Above ₹10 Lakh</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="sortFilter">
+                            SORT BY
+                        </label>
+
+                        <select id="sortFilter">
+                            <option value="default">Recommended</option>
+                            <option value="priceLow">
+                                Price: Low to High
+                            </option>
+                            <option value="priceHigh">
+                                Price: High to Low
+                            </option>
+                            <option value="powerHigh">
+                                Power: High to Low
+                            </option>
+                            <option value="speedHigh">
+                                Top Speed: High to Low
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="category-pills">
+
+                    <button
+                        class="category-pill active"
+                        data-category="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="category-pill"
+                        data-category="street"
+                    >
+                        Street
+                    </button>
+
+                    <button
+                        class="category-pill"
+                        data-category="sport"
+                    >
+                        Sport
+                    </button>
+
+                    <button
+                        class="category-pill"
+                        data-category="cruiser"
+                    >
+                        Cruiser
+                    </button>
+
+                    <button
+                        class="category-pill"
+                        data-category="adventure"
+                    >
+                        Adventure
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= BIKE GRID ================= -->
+
+            <div
+                class="bike-grid"
+                id="bikeGrid"
+            ></div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                class="empty-state"
+                id="emptyState"
+            >
+
+                <div class="empty-icon">🏍️</div>
+
+                <h3>No bikes found</h3>
+
+                <p>
+                    Try changing your search or filter options.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    onclick="resetFilters()"
+                >
+                    Reset Filters
                 </button>
 
             </div>
 
-        </div>
+        </section>
 
-        <div class="hero-bike">
 
-            <div class="circle"></div>
+        <!-- ================= COMPARISON ================= -->
 
-            <img
-                src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80"
-                alt="Premium Motorcycle"
+        <section
+            class="comparison-section"
+            id="compare"
+        >
+
+            <div class="section-heading comparison-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        SMART COMPARISON
+                    </p>
+
+                    <h2>
+                        COMPARE YOUR
+                        <span>FAVORITES.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Select up to three motorcycles and compare
+                        their specifications and prices side by side.
+                    </p>
+
+                </div>
+
+                <div class="compare-count">
+                    <strong id="compareCount">0</strong>
+                    <span>/ 3 Selected</span>
+                </div>
+
+            </div>
+
+
+            <div class="comparison-empty" id="comparisonEmpty">
+
+                <div class="compare-icon">⚖</div>
+
+                <h3>Ready to compare?</h3>
+
+                <p>
+                    Select bikes using the Compare button on any bike card.
+                </p>
+
+                <button
+                    class="secondary-btn"
+                    onclick="scrollToBikes()"
+                >
+                    Browse Bikes
+                </button>
+
+            </div>
+
+
+            <div
+                class="comparison-content"
+                id="comparisonContent"
             >
 
-        </div>
+                <div class="comparison-topbar">
 
-    </section>
+                    <div>
+                        <span class="selected-label">
+                            SELECTED BIKES
+                        </span>
 
+                        <h3>
+                            Side-by-Side Comparison
+                        </h3>
+                    </div>
 
-    <!-- STATS -->
-    <section class="stats">
+                    <button
+                        class="clear-compare"
+                        onclick="clearComparison()"
+                    >
+                        Clear All
+                    </button>
 
-        <div>
-            <h2>25+</h2>
-            <p>Bike Models</p>
-        </div>
-
-        <div>
-            <h2>150K+</h2>
-            <p>Happy Riders</p>
-        </div>
-
-        <div>
-            <h2>30+</h2>
-            <p>Countries</p>
-        </div>
-
-        <div>
-            <h2>10</h2>
-            <p>Years Experience</p>
-        </div>
-
-    </section>
+                </div>
 
 
-    <!-- BIKES -->
-    <section class="bikes-section" id="bikes">
+                <div class="comparison-table-wrapper">
 
-        <div class="section-heading">
+                    <table class="comparison-table">
 
-            <div>
-                <p class="small-title">OUR COLLECTION</p>
+                        <thead id="comparisonHead"></thead>
+
+                        <tbody id="comparisonBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PRICE COMPARISON ================= -->
+
+        <section class="price-section">
+
+            <div class="price-content">
+
+                <div>
+
+                    <p class="eyebrow">
+                        PRICE INSIGHTS
+                    </p>
+
+                    <h2>
+                        CHOOSE THE RIGHT
+                        <span>VALUE.</span>
+                    </h2>
+
+                    <p>
+                        Compare starting prices and understand how
+                        each motorcycle fits into your budget.
+                    </p>
+
+                </div>
+
+                <div class="price-summary">
+
+                    <div class="price-summary-card">
+                        <span>LOWEST PRICE</span>
+                        <strong id="lowestPrice">₹1.70 Lakh</strong>
+                        <small id="lowestBike">
+                            Velocity X1
+                        </small>
+                    </div>
+
+                    <div class="price-summary-card">
+                        <span>HIGHEST PRICE</span>
+                        <strong id="highestPrice">₹18.50 Lakh</strong>
+                        <small id="highestBike">
+                            Velocity ZX
+                        </small>
+                    </div>
+
+                    <div class="price-summary-card">
+                        <span>AVERAGE PRICE</span>
+                        <strong id="averagePrice">₹6.14 Lakh</strong>
+                        <small>Across collection</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section
+            class="about"
+            id="about"
+        >
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1558981852-426c6a049c5c?auto=format&fit=crop&w=1400&q=85"
+                    alt="Motorcycle rider"
+                    loading="lazy"
+                >
+
+                <div class="image-label">
+                    BUILT FOR RIDERS
+                </div>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <p class="eyebrow">
+                    WHY VELOCITY
+                </p>
 
                 <h2>
-                    FIND YOUR
-                    <span>PERFECT RIDE.</span>
+                    ENGINEERED FOR
+                    <span>THOSE WHO RIDE.</span>
                 </h2>
-            </div>
 
-            <div class="search-box">
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search bikes..."
-                    onkeyup="searchBikes()"
-                >
-                🔍
-            </div>
-
-        </div>
+                <p class="about-description">
+                    We believe a motorcycle should be more than
+                    a machine. It should become an extension of
+                    your personality, passion and freedom.
+                </p>
 
 
-        <!-- FILTERS -->
-        <div class="filters">
+                <div class="features">
 
-            <button class="filter active" onclick="filterBikes('all', this)">
-                All
-            </button>
+                    <div class="feature">
 
-            <button class="filter" onclick="filterBikes('street', this)">
-                Street
-            </button>
-
-            <button class="filter" onclick="filterBikes('sport', this)">
-                Sport
-            </button>
-
-            <button class="filter" onclick="filterBikes('cruiser', this)">
-                Cruiser
-            </button>
-
-            <button class="filter" onclick="filterBikes('adventure', this)">
-                Adventure
-            </button>
-
-        </div>
-
-
-        <!-- BIKE GRID -->
-        <div class="bike-grid" id="bikeGrid">
-
-            <!-- BIKE 1 -->
-            <div class="bike-card" data-category="street">
-
-                <div class="bike-image">
-                    <span class="badge">POPULAR</span>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=900&q=80"
-                        alt="Street Bike"
-                    >
-                </div>
-
-                <div class="bike-info">
-
-                    <p class="category">STREET</p>
-
-                    <h3>Velocity X1</h3>
-
-                    <p class="description">
-                        Aggressive styling with everyday performance.
-                    </p>
-
-                    <div class="bike-specs">
+                        <span class="feature-number">01</span>
 
                         <div>
-                            <strong>155</strong>
-                            <small>CC</small>
-                        </div>
+                            <h3>Performance</h3>
 
-                        <div>
-                            <strong>18.4</strong>
-                            <small>HP</small>
-                        </div>
-
-                        <div>
-                            <strong>48</strong>
-                            <small>KM/L</small>
-                        </div>
-
-                        <div>
-                            <strong>130</strong>
-                            <small>KM/H</small>
+                            <p>
+                                Powerful engines engineered for
+                                exceptional performance.
+                            </p>
                         </div>
 
                     </div>
 
-                    <div class="card-bottom">
+
+                    <div class="feature">
+
+                        <span class="feature-number">02</span>
 
                         <div>
-                            <small>Starting from</small>
-                            <strong>₹1.70 Lakh</strong>
+                            <h3>Technology</h3>
+
+                            <p>
+                                Smart technology designed around
+                                the modern rider.
+                            </p>
                         </div>
 
-                        <button onclick="openModal('Velocity X1')">
-                            View Details
-                        </button>
+                    </div>
+
+
+                    <div class="feature">
+
+                        <span class="feature-number">03</span>
+
+                        <div>
+                            <h3>Design</h3>
+
+                            <p>
+                                Bold designs that make every
+                                ride unforgettable.
+                            </p>
+                        </div>
 
                     </div>
 
@@ -228,511 +640,384 @@
 
             </div>
 
+        </section>
 
-            <!-- BIKE 2 -->
-            <div class="bike-card" data-category="sport">
 
-                <div class="bike-image">
+        <!-- ================= CTA ================= -->
 
-                    <span class="badge new">NEW</span>
+        <section class="cta">
 
-                    <img
-                        src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=900&q=80"
-                        alt="Sports Bike"
-                    >
-
-                </div>
-
-                <div class="bike-info">
-
-                    <p class="category">SPORT</p>
-
-                    <h3>Velocity R7</h3>
-
-                    <p class="description">
-                        Track-inspired performance built for speed.
-                    </p>
-
-                    <div class="bike-specs">
-
-                        <div>
-                            <strong>689</strong>
-                            <small>CC</small>
-                        </div>
-
-                        <div>
-                            <strong>73</strong>
-                            <small>HP</small>
-                        </div>
-
-                        <div>
-                            <strong>22</strong>
-                            <small>KM/L</small>
-                        </div>
-
-                        <div>
-                            <strong>210</strong>
-                            <small>KM/H</small>
-                        </div>
-
-                    </div>
-
-                    <div class="card-bottom">
-
-                        <div>
-                            <small>Starting from</small>
-                            <strong>₹8.25 Lakh</strong>
-                        </div>
-
-                        <button onclick="openModal('Velocity R7')">
-                            View Details
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BIKE 3 -->
-            <div class="bike-card" data-category="cruiser">
-
-                <div class="bike-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=900&q=80"
-                        alt="Cruiser Bike"
-                    >
-
-                </div>
-
-                <div class="bike-info">
-
-                    <p class="category">CRUISER</p>
-
-                    <h3>Velocity Classic</h3>
-
-                    <p class="description">
-                        Timeless design with modern engineering.
-                    </p>
-
-                    <div class="bike-specs">
-
-                        <div>
-                            <strong>349</strong>
-                            <small>CC</small>
-                        </div>
-
-                        <div>
-                            <strong>20</strong>
-                            <small>HP</small>
-                        </div>
-
-                        <div>
-                            <strong>35</strong>
-                            <small>KM/L</small>
-                        </div>
-
-                        <div>
-                            <strong>120</strong>
-                            <small>KM/H</small>
-                        </div>
-
-                    </div>
-
-                    <div class="card-bottom">
-
-                        <div>
-                            <small>Starting from</small>
-                            <strong>₹2.15 Lakh</strong>
-                        </div>
-
-                        <button onclick="openModal('Velocity Classic')">
-                            View Details
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BIKE 4 -->
-            <div class="bike-card" data-category="adventure">
-
-                <div class="bike-image">
-
-                    <span class="badge">ADVENTURE</span>
-
-                    <img
-                        src="https://images.pexels.com/photos/35538682/pexels-photo-35538682.jpeg"
-                        alt="Adventure Bike"
-                    >
-
-                </div>
-
-                <div class="bike-info">
-
-                    <p class="category">ADVENTURE</p>
-
-                    <h3>Velocity Terra</h3>
-
-                    <p class="description">
-                        Built to conquer roads, trails and everything beyond.
-                    </p>
-
-                    <div class="bike-specs">
-
-                        <div>
-                            <strong>450</strong>
-                            <small>CC</small>
-                        </div>
-
-                        <div>
-                            <strong>40</strong>
-                            <small>HP</small>
-                        </div>
-
-                        <div>
-                            <strong>30</strong>
-                            <small>KM/L</small>
-                        </div>
-
-                        <div>
-                            <strong>165</strong>
-                            <small>KM/H</small>
-                        </div>
-
-                    </div>
-
-                    <div class="card-bottom">
-
-                        <div>
-                            <small>Starting from</small>
-                            <strong>₹3.80 Lakh</strong>
-                        </div>
-
-                        <button onclick="openModal('Velocity Terra')">
-                            View Details
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BIKE 5 -->
-            <div class="bike-card" data-category="street">
-
-                <div class="bike-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1580310614729-ccd69652491d?auto=format&fit=crop&w=900&q=80"
-                        alt="Street Motorcycle"
-                    >
-
-                </div>
-
-                <div class="bike-info">
-
-                    <p class="category">STREET</p>
-
-                    <h3>Velocity S5</h3>
-
-                    <p class="description">
-                        Lightweight. Agile. Designed for city domination.
-                    </p>
-
-                    <div class="bike-specs">
-
-                        <div>
-                            <strong>250</strong>
-                            <small>CC</small>
-                        </div>
-
-                        <div>
-                            <strong>28</strong>
-                            <small>HP</small>
-                        </div>
-
-                        <div>
-                            <strong>40</strong>
-                            <small>KM/L</small>
-                        </div>
-
-                        <div>
-                            <strong>145</strong>
-                            <small>KM/H</small>
-                        </div>
-
-                    </div>
-
-                    <div class="card-bottom">
-
-                        <div>
-                            <small>Starting from</small>
-                            <strong>₹2.45 Lakh</strong>
-                        </div>
-
-                        <button onclick="openModal('Velocity S5')">
-                            View Details
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BIKE 6 -->
-            <div class="bike-card" data-category="sport">
-
-                <div class="bike-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80"
-                        alt="Performance Bike"
-                    >
-
-                </div>
-
-                <div class="bike-info">
-
-                    <p class="category">SPORT</p>
-
-                    <h3>Velocity ZX</h3>
-
-                    <p class="description">
-                        Precision engineering for uncompromising performance.
-                    </p>
-
-                    <div class="bike-specs">
-
-                        <div>
-                            <strong>998</strong>
-                            <small>CC</small>
-                        </div>
-
-                        <div>
-                            <strong>150</strong>
-                            <small>HP</small>
-                        </div>
-
-                        <div>
-                            <strong>18</strong>
-                            <small>KM/L</small>
-                        </div>
-
-                        <div>
-                            <strong>299</strong>
-                            <small>KM/H</small>
-                        </div>
-
-                    </div>
-
-                    <div class="card-bottom">
-
-                        <div>
-                            <small>Starting from</small>
-                            <strong>₹18.50 Lakh</strong>
-                        </div>
-
-                        <button onclick="openModal('Velocity ZX')">
-                            View Details
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- WHY VELOCITY -->
-    <section class="about" id="about">
-
-        <div class="about-image">
-
-            <img
-                src="https://images.unsplash.com/photo-1558981852-426c6a049c5c?auto=format&fit=crop&w=1200&q=80"
-                alt="Motorcycle rider"
-            >
-
-        </div>
-
-        <div class="about-content">
-
-            <p class="small-title">WHY VELOCITY</p>
+            <p class="eyebrow">
+                READY TO RIDE?
+            </p>
 
             <h2>
-                ENGINEERED FOR
-                <span>THOSE WHO RIDE.</span>
+                YOUR NEXT ADVENTURE
+                <span>STARTS HERE.</span>
             </h2>
 
             <p>
-                We believe a motorcycle should be more than a machine.
-                It should be an extension of your personality, passion
-                and freedom.
+                Find your motorcycle, compare the specs and
+                take the next step.
             </p>
 
-            <div class="features">
+            <button
+                class="primary-btn"
+                onclick="openTestRide()"
+            >
+                Book a Test Ride →
+            </button>
 
-                <div>
-                    <span>01</span>
-                    <div>
-                        <h4>Performance</h4>
-                        <p>Powerful engines engineered for exceptional performance.</p>
-                    </div>
-                </div>
+        </section>
 
-                <div>
-                    <span>02</span>
-                    <div>
-                        <h4>Technology</h4>
-                        <p>Smart technology designed around the modern rider.</p>
-                    </div>
-                </div>
-
-                <div>
-                    <span>03</span>
-                    <div>
-                        <h4>Design</h4>
-                        <p>Bold designs that make every ride unforgettable.</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+    </main>
 
 
-    <!-- CTA -->
-    <section class="cta">
+    <!-- ================= FOOTER ================= -->
 
-        <p class="small-title">READY TO RIDE?</p>
-
-        <h2>
-            YOUR NEXT ADVENTURE
-            <span>STARTS HERE.</span>
-        </h2>
-
-        <button class="primary-btn" onclick="showMessage()">
-            Book a Test Ride →
-        </button>
-
-    </section>
-
-
-    <!-- FOOTER -->
     <footer id="contact">
 
         <div class="footer-top">
 
-            <div>
-                <div class="logo">
+            <div class="footer-brand">
+
+                <a href="#home" class="logo">
                     <span>V</span> VELOCITY
-                </div>
+                </a>
 
                 <p>
                     Built for riders.
                     Designed for the road ahead.
                 </p>
+
             </div>
 
-            <div>
+
+            <div class="footer-column">
+
                 <h4>EXPLORE</h4>
+
                 <a href="#home">Home</a>
                 <a href="#bikes">Bikes</a>
+                <a href="#compare">Compare</a>
                 <a href="#about">About</a>
+
             </div>
 
-            <div>
+
+            <div class="footer-column">
+
                 <h4>CONTACT</h4>
+
                 <p>hello@velocitybikes.com</p>
                 <p>+91 98765 43210</p>
                 <p>New Delhi, India</p>
+
             </div>
 
-            <div>
+
+            <div class="footer-column">
+
                 <h4>FOLLOW US</h4>
-                <div class="socials">
-                    <span>Instagram</span>
-                    <span>Facebook</span>
-                    <span>YouTube</span>
-                </div>
+
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">YouTube</a>
+
             </div>
 
         </div>
 
+
         <div class="footer-bottom">
-            © 2026 VELOCITY MOTORCYCLES. ALL RIGHTS RESERVED.
+
+            <span>
+                © 2026 VELOCITY MOTORCYCLES
+            </span>
+
+            <span>
+                ALL RIGHTS RESERVED
+            </span>
+
         </div>
 
     </footer>
 
 
-    <!-- MODAL -->
-    <div class="modal" id="bikeModal">
+    <!-- ================= BIKE DETAILS MODAL ================= -->
 
-        <div class="modal-content">
+    <div
+        class="modal"
+        id="detailsModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+    >
 
-            <button class="close" onclick="closeModal()">×</button>
+        <div class="modal-content details-modal">
 
-            <p class="small-title">BIKE DETAILS</p>
+            <button
+                class="modal-close"
+                onclick="closeModal('detailsModal')"
+                aria-label="Close"
+            >
+                ×
+            </button>
 
-            <h2 id="modalTitle">Velocity X1</h2>
+            <div class="modal-image">
 
-            <div class="modal-grid">
+                <img
+                    id="modalImage"
+                    src=""
+                    alt="Bike"
+                >
 
-                <div>
-                    <span>ENGINE</span>
-                    <strong id="modalEngine">155 CC</strong>
+            </div>
+
+            <div class="modal-info">
+
+                <p
+                    class="eyebrow"
+                    id="modalCategory"
+                >
+                    STREET
+                </p>
+
+                <h2 id="modalTitle">
+                    Velocity X1
+                </h2>
+
+                <p
+                    class="modal-description"
+                    id="modalDescription"
+                ></p>
+
+                <div class="modal-price">
+
+                    <span>STARTING FROM</span>
+
+                    <strong id="modalPrice">
+                        ₹1.70 Lakh
+                    </strong>
+
                 </div>
 
-                <div>
-                    <span>POWER</span>
-                    <strong id="modalPower">18.4 HP</strong>
+
+                <div class="full-specs">
+
+                    <div>
+                        <span>ENGINE</span>
+                        <strong id="modalEngine"></strong>
+                    </div>
+
+                    <div>
+                        <span>POWER</span>
+                        <strong id="modalPower"></strong>
+                    </div>
+
+                    <div>
+                        <span>TORQUE</span>
+                        <strong id="modalTorque"></strong>
+                    </div>
+
+                    <div>
+                        <span>MILEAGE</span>
+                        <strong id="modalMileage"></strong>
+                    </div>
+
+                    <div>
+                        <span>TOP SPEED</span>
+                        <strong id="modalSpeed"></strong>
+                    </div>
+
+                    <div>
+                        <span>FUEL CAPACITY</span>
+                        <strong id="modalFuel"></strong>
+                    </div>
+
+                    <div>
+                        <span>KERB WEIGHT</span>
+                        <strong id="modalWeight"></strong>
+                    </div>
+
+                    <div>
+                        <span>SEAT HEIGHT</span>
+                        <strong id="modalSeat"></strong>
+                    </div>
+
                 </div>
 
-                <div>
-                    <span>MILEAGE</span>
-                    <strong id="modalMileage">48 KM/L</strong>
-                </div>
 
-                <div>
-                    <span>TOP SPEED</span>
-                    <strong id="modalSpeed">130 KM/H</strong>
-                </div>
+                <div class="modal-actions">
 
-                <div>
-                    <span>TORQUE</span>
-                    <strong>16 Nm</strong>
-                </div>
+                    <button
+                        class="primary-btn"
+                        id="modalCompareBtn"
+                    >
+                        Add to Compare
+                    </button>
 
-                <div>
-                    <span>FUEL CAPACITY</span>
-                    <strong>12 L</strong>
+                    <button
+                        class="secondary-btn"
+                        onclick="openTestRide()"
+                    >
+                        Book Test Ride
+                    </button>
+
                 </div>
 
             </div>
 
-            <button class="primary-btn modal-btn" onclick="showMessage()">
-                Book Test Ride
+        </div>
+
+    </div>
+
+
+    <!-- ================= TEST RIDE MODAL ================= -->
+
+    <div
+        class="modal"
+        id="testRideModal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-content test-modal">
+
+            <button
+                class="modal-close"
+                onclick="closeModal('testRideModal')"
+            >
+                ×
             </button>
+
+            <p class="eyebrow">
+                TEST RIDE
+            </p>
+
+            <h2>
+                FEEL THE
+                <span>DIFFERENCE.</span>
+            </h2>
+
+            <p>
+                Fill in your details and our team will contact
+                you to schedule a test ride.
+            </p>
+
+            <form id="testRideForm">
+
+                <div class="form-grid">
+
+                    <div class="form-field">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            id="name"
+                            type="text"
+                            placeholder="Your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            placeholder="+91 XXXXX XXXXX"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="testBike">
+                            Select Bike
+                        </label>
+
+                        <select id="testBike">
+
+                            <option>
+                                Velocity X1
+                            </option>
+
+                            <option>
+                                Velocity R7
+                            </option>
+
+                            <option>
+                                Velocity Classic
+                            </option>
+
+                            <option>
+                                Velocity Terra
+                            </option>
+
+                            <option>
+                                Velocity S5
+                            </option>
+
+                            <option>
+                                Velocity ZX
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="testDate">
+                            Preferred Date
+                        </label>
+
+                        <input
+                            id="testDate"
+                            type="date"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="primary-btn form-submit"
+                    type="submit"
+                >
+                    Submit Request →
+                </button>
+
+            </form>
 
         </div>
 
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        <span id="toastIcon">✓</span>
+        <p id="toastMessage">
+            Done!
+        </p>
     </div>
 
 
