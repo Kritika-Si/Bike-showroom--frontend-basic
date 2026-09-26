@@ -1,232 +1,323 @@
-/* ================= SCROLL ================= */
+/* ==========================================
+   VELOCITY BIKE SHOWROOM
+   PREMIUM JAVASCRIPT
+========================================== */
 
-function scrollToBikes() {
-
-    document.getElementById("bikes").scrollIntoView({
-        behavior: "smooth"
-    });
-
+const bikes = [
+{
+    name:"Yamaha R1",
+    category:"sport",
+    engine:"998 CC",
+    power:"200 HP",
+    speed:"299 KM/H",
+    price:"₹19.20 L",
+    image:"images/r1.jpg",
+    desc:"Flagship supersport built for track performance."
+},
+{
+    name:"BMW S1000RR",
+    category:"sport",
+    engine:"999 CC",
+    power:"210 HP",
+    speed:"299 KM/H",
+    price:"₹21.50 L",
+    image:"images/s1000rr.jpg",
+    desc:"German superbike with incredible electronics."
+},
+{
+    name:"Yamaha MT-15",
+    category:"street",
+    engine:"155 CC",
+    power:"18 HP",
+    speed:"130 KM/H",
+    price:"₹1.72 L",
+    image:"images/mt15.jpg",
+    desc:"Best lightweight street motorcycle."
+},
+{
+    name:"KTM Duke 390",
+    category:"street",
+    engine:"399 CC",
+    power:"46 HP",
+    speed:"167 KM/H",
+    price:"₹2.95 L",
+    image:"images/duke390.jpg",
+    desc:"Aggressive naked street machine."
+},
+{
+    name:"Ducati Panigale V4",
+    category:"sport",
+    engine:"1103 CC",
+    power:"214 HP",
+    speed:"300 KM/H",
+    price:"₹29.00 L",
+    image:"images/panigale.jpg",
+    desc:"Premium Italian superbike."
+},
+{
+    name:"Royal Enfield GT650",
+    category:"cruiser",
+    engine:"648 CC",
+    power:"47 HP",
+    speed:"170 KM/H",
+    price:"₹3.39 L",
+    image:"images/gt650.jpg",
+    desc:"Classic café racer with twin-cylinder engine."
+},
+{
+    name:"BMW G310GS",
+    category:"adventure",
+    engine:"313 CC",
+    power:"34 HP",
+    speed:"143 KM/H",
+    price:"₹3.30 L",
+    image:"images/g310gs.jpg",
+    desc:"Adventure motorcycle for touring lovers."
 }
+];
 
+/* ================= ELEMENTS ================= */
 
-/* ================= TEST RIDE ================= */
+const container = document.getElementById("bikeContainer");
+const searchInput = document.getElementById("searchInput");
+const categoryFilter = document.getElementById("categoryFilter");
 
-function showMessage() {
+const compareHead = document.getElementById("compareHead");
+const compareBody = document.getElementById("compareBody");
 
-    alert(
-        "Thank you for your interest! 🚀\n\n" +
-        "Our team will contact you shortly to schedule your test ride."
-    );
+const modal = document.getElementById("bikeModal");
+const modalImg = document.getElementById("modalImg");
+const modalName = document.getElementById("modalName");
+const modalEngine = document.getElementById("modalEngine");
+const modalPower = document.getElementById("modalPower");
+const modalSpeed = document.getElementById("modalSpeed");
+const modalPrice = document.getElementById("modalPrice");
+const closeBtn = document.querySelector(".close");
 
-}
+let compareList = [];
 
+/* ================= RENDER BIKES ================= */
 
-/* ================= FILTER ================= */
+function renderBikes(data){
 
-function filterBikes(category, button) {
+container.innerHTML = "";
 
-    const cards = document.querySelectorAll(".bike-card");
+data.forEach((bike,index)=>{
 
-    const filters = document.querySelectorAll(".filter");
+const card = document.createElement("div");
 
-    filters.forEach(filter => {
-        filter.classList.remove("active");
-    });
+card.className = "bike-card";
 
-    button.classList.add("active");
+card.innerHTML = `
+<div class="bike-image">
 
-    cards.forEach(card => {
+<img src="${bike.image}" alt="${bike.name}">
 
-        if (
-            category === "all" ||
-            card.dataset.category === category
-        ) {
+<div class="badge">NEW</div>
 
-            card.style.display = "block";
+<div class="like">
+<i class="fa-solid fa-heart"></i>
+</div>
 
-        } else {
+</div>
 
-            card.style.display = "none";
+<div class="bike-content">
 
-        }
+<p class="bike-category">${bike.category.toUpperCase()}</p>
 
-    });
+<h3>${bike.name}</h3>
 
-}
+<p class="desc">${bike.desc}</p>
 
+<div class="specs">
 
-/* ================= SEARCH ================= */
+<div class="spec">
+<span>ENGINE</span>
+<h4>${bike.engine}</h4>
+</div>
 
-function searchBikes() {
+<div class="spec">
+<span>POWER</span>
+<h4>${bike.power}</h4>
+</div>
 
-    const search =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
+<div class="spec">
+<span>TOP SPEED</span>
+<h4>${bike.speed}</h4>
+</div>
 
-    const cards =
-        document.querySelectorAll(".bike-card");
+<div class="spec">
+<span>PRICE</span>
+<h4>${bike.price}</h4>
+</div>
 
-    cards.forEach(card => {
+</div>
 
-        const name =
-            card.querySelector("h3")
-            .innerText
-            .toLowerCase();
+<div class="price-row">
 
-        const category =
-            card.dataset.category
-            .toLowerCase();
+<div class="price">
+<small>Starting</small>
+<h2>${bike.price}</h2>
+</div>
 
-        if (
-            name.includes(search) ||
-            category.includes(search)
-        ) {
+<button class="compare-btn">
+Compare
+</button>
 
-            card.style.display = "block";
+</div>
 
-        } else {
+</div>
+`;
 
-            card.style.display = "none";
-
-        }
-
-    });
-
-}
-
-
-/* ================= MODAL DATA ================= */
-
-const bikes = {
-
-    "Velocity X1": {
-        engine: "155 CC",
-        power: "18.4 HP",
-        mileage: "48 KM/L",
-        speed: "130 KM/H"
-    },
-
-    "Velocity R7": {
-        engine: "689 CC",
-        power: "73 HP",
-        mileage: "22 KM/L",
-        speed: "210 KM/H"
-    },
-
-    "Velocity Classic": {
-        engine: "349 CC",
-        power: "20 HP",
-        mileage: "35 KM/L",
-        speed: "120 KM/H"
-    },
-
-    "Velocity Terra": {
-        engine: "450 CC",
-        power: "40 HP",
-        mileage: "30 KM/L",
-        speed: "165 KM/H"
-    },
-
-    "Velocity S5": {
-        engine: "250 CC",
-        power: "28 HP",
-        mileage: "40 KM/L",
-        speed: "145 KM/H"
-    },
-
-    "Velocity ZX": {
-        engine: "998 CC",
-        power: "150 HP",
-        mileage: "18 KM/L",
-        speed: "299 KM/H"
-    }
-
+card.querySelector("img").onclick = ()=>{
+openModal(bike);
 };
 
+card.querySelector(".compare-btn").onclick = ()=>{
+addCompare(bike);
+};
 
-/* ================= OPEN MODAL ================= */
-
-function openModal(bikeName) {
-
-    const bike = bikes[bikeName];
-
-    document.getElementById("modalTitle").innerText =
-        bikeName;
-
-    document.getElementById("modalEngine").innerText =
-        bike.engine;
-
-    document.getElementById("modalPower").innerText =
-        bike.power;
-
-    document.getElementById("modalMileage").innerText =
-        bike.mileage;
-
-    document.getElementById("modalSpeed").innerText =
-        bike.speed;
-
-    document.getElementById("bikeModal")
-        .classList.add("show");
-
-}
-
-
-/* ================= CLOSE MODAL ================= */
-
-function closeModal() {
-
-    document.getElementById("bikeModal")
-        .classList.remove("show");
-
-}
-
-
-/* ================= CLOSE ON OUTSIDE CLICK ================= */
-
-window.addEventListener("click", function(event) {
-
-    const modal =
-        document.getElementById("bikeModal");
-
-    if (event.target === modal) {
-
-        closeModal();
-
-    }
+container.appendChild(card);
 
 });
 
+}
+
+renderBikes(bikes);
+
+/* ================= SEARCH ================= */
+
+function filterBikes(){
+
+const search = searchInput.value.toLowerCase();
+
+const category = categoryFilter.value;
+
+const filtered = bikes.filter(bike=>{
+
+const matchName = bike.name.toLowerCase().includes(search);
+
+const matchCat = category==="all" || bike.category===category;
+
+return matchName && matchCat;
+
+});
+
+renderBikes(filtered);
+
+}
+
+searchInput.addEventListener("input",filterBikes);
+
+categoryFilter.addEventListener("change",filterBikes);
+
+/* ================= MODAL ================= */
+
+function openModal(bike){
+
+modal.classList.add("active");
+
+modalImg.src = bike.image;
+modalName.innerText = bike.name;
+modalEngine.innerText = bike.engine;
+modalPower.innerText = bike.power;
+modalSpeed.innerText = bike.speed;
+modalPrice.innerText = bike.price;
+
+}
+
+closeBtn.onclick = ()=>{
+modal.classList.remove("active");
+};
+
+window.onclick = (e)=>{
+if(e.target===modal){
+modal.classList.remove("active");
+}
+};
+
+/* ================= COMPARE ================= */
+
+function addCompare(bike){
+
+if(compareList.find(item=>item.name===bike.name)) return;
+
+if(compareList.length===3){
+alert("You can compare maximum 3 bikes.");
+return;
+}
+
+compareList.push(bike);
+
+renderCompare();
+
+}
+
+function renderCompare(){
+
+compareHead.innerHTML = "<th>Specification</th>";
+
+compareBody.innerHTML = "";
+
+compareList.forEach(bike=>{
+compareHead.innerHTML += `<th>${bike.name}</th>`;
+});
+
+const specs = [
+["Price","price"],
+["Engine","engine"],
+["Power","power"],
+["Top Speed","speed"]
+];
+
+specs.forEach(spec=>{
+
+let row = `<tr><td>${spec[0]}</td>`;
+
+compareList.forEach(bike=>{
+row += `<td>${bike[spec[1]]}</td>`;
+});
+
+row += "</tr>";
+
+compareBody.innerHTML += row;
+
+});
+
+}
+
+/* ================= TEST RIDE ================= */
+
+document.getElementById("rideForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("🎉 Your Test Ride has been booked successfully!");
+
+this.reset();
+
+});
+
+/* ================= HERO BUTTON ================= */
+
+function scrollToBikes(){
+
+document.getElementById("collection").scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
 
 /* ================= MOBILE MENU ================= */
 
-function toggleMenu() {
+const menuBtn = document.getElementById("menu-btn");
 
-    const nav =
-        document.querySelector(".navbar nav");
+const navbar = document.querySelector(".navbar");
 
-    if (nav.style.display === "flex") {
+menuBtn.addEventListener("click",()=>{
 
-        nav.style.display = "none";
+navbar.classList.toggle("show");
 
-    } else {
-
-        nav.style.display = "flex";
-
-        nav.style.position = "absolute";
-
-        nav.style.top = "80px";
-
-        nav.style.left = "0";
-
-        nav.style.width = "100%";
-
-        nav.style.background = "#080808";
-
-        nav.style.padding = "25px";
-
-        nav.style.flexDirection = "column";
-
-    }
-
-}
+});
